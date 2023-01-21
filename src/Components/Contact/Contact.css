@@ -1,0 +1,36 @@
+.box {
+  min-width: 30%;
+  font-family: monospace;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 30px;
+  box-shadow: 1px 1px 8px rgb(209, 206, 206);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.box p {
+  margin-left: 20px;
+}
+.text-box {
+  max-width: 70%;
+  min-height: 500px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 8px rgb(209, 206, 206);
+  border-radius: 10px;
+  margin-top: 10%;
+  margin-left: 15%;
+  padding: 40px;
+  font-family: monospace;
+}
+.text-field {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -280px;
+}
+.inputGroup {
+  margin-top: 30px;
+}
+.btstyle {
+  box-shadow: 2px 2px 10px rgb(92, 90, 90);
+}

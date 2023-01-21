@@ -1,0 +1,28 @@
+.home {
+  width: 100%;
+  height: 100vh;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.home::before {
+  content: "";
+  position: absolute;
+  background-color: rgb(146, 171, 173);
+  width: 50%;
+  height: 100%;
+  left: 0;
+  z-index: -1;
+}
+.home::after {
+  content: "";
+  position: absolute;
+  background-color: rgb(202, 178, 178);
+  width: 50%;
+  height: 100%;
+  right: 0;
+  z-index: -1;
+}
