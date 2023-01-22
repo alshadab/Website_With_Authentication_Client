@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 import login from "../images/clipboard_vectorized.png";
+import NavbarAdd from "../Navbar/NavbarAdd";
 
 const Login = () => {
   const URL = process.env.REACT_APP_APP_URL;
@@ -54,68 +55,71 @@ const Login = () => {
     }
   };
   return (
-    <div className="form-div">
-      <div className="form-box">
-        <Row className="d-flex justify-content-center align-items-center row">
-          <Col md={5}>
-            <div className="file">
-              <h1>Login</h1>
-              <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Form.Group controlId="validationCustomUsername">
-                  <InputGroup hasValidation>
+    <>
+      <NavbarAdd />
+      <div className="form-div">
+        <div className="form-box">
+          <Row className="d-flex justify-content-center align-items-center row">
+            <Col md={5}>
+              <div className="file">
+                <h1>Login</h1>
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                  <Form.Group controlId="validationCustomUsername">
+                    <InputGroup hasValidation>
+                      <Form.Control
+                        type="email"
+                        placeholder="User Email"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                        value={user.email}
+                        onChange={handleChange}
+                        name="email"
+                        className="control"
+                      />
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                      <Form.Control.Feedback type="invalid">
+                        Please choose a Email.
+                      </Form.Control.Feedback>
+                    </InputGroup>
+                  </Form.Group>
+
+                  <Form.Group controlId="validationCustom03">
                     <Form.Control
-                      type="email"
-                      placeholder="User Email"
-                      aria-describedby="inputGroupPrepend"
+                      type="password"
+                      placeholder="Password"
                       required
-                      value={user.email}
+                      value={user.password}
                       onChange={handleChange}
-                      name="email"
+                      name="password"
                       className="control"
                     />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
-                      Please choose a Email.
+                      Please provide a Password.
                     </Form.Control.Feedback>
-                  </InputGroup>
-                </Form.Group>
+                  </Form.Group>
 
-                <Form.Group controlId="validationCustom03">
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    required
-                    value={user.password}
-                    onChange={handleChange}
-                    name="password"
-                    className="control"
-                  />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  <Form.Control.Feedback type="invalid">
-                    Please provide a Password.
-                  </Form.Control.Feedback>
-                </Form.Group>
-
-                <Button variant="warning" className="mt-3 mb-3" type="submit">
-                  Log In
-                </Button>
-              </Form>
-            </div>
-          </Col>
-          <Col md={6}>
-            <div className="information">
-              <img src={login} alt="login" />
-              <p>
-                New?{" "}
-                <Link style={{ color: "white" }} to="/signup">
-                  Create an account
-                </Link>
-              </p>
-            </div>
-          </Col>
-        </Row>
+                  <Button variant="warning" className="mt-3 mb-3" type="submit">
+                    Log In
+                  </Button>
+                </Form>
+              </div>
+            </Col>
+            <Col md={6}>
+              <div className="information">
+                <img src={login} alt="login" />
+                <p>
+                  New?{" "}
+                  <Link style={{ color: "white" }} to="/signup">
+                    Create an account
+                  </Link>
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

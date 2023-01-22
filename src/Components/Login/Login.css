@@ -27,8 +27,8 @@
 .form-box::before {
   position: absolute;
   content: "";
-  width: 600px;
-  height: 800px;
+  width: 50%;
+  height: 100%;
   background-color: #3eb698;
   z-index: -1;
   right: 0;
@@ -45,6 +45,8 @@
 
 .row {
   margin-top: 150px;
+  display: flex;
+  justify-content: space-around;
 }
 .control {
   border: none;
