@@ -28,6 +28,7 @@ const About = () => {
   useEffect(() => {
     GetAbout();
   });
+
   return (
     <>
       <NavbarAdd />

@@ -38,7 +38,7 @@ const NavbarAdd = () => {
       <Container>
         <Navbar.Brand>
           <NavLink style={{ textDecoration: "none", color: "#61876E" }} to="/">
-            <h3>Develop Verse</h3>
+            <h3>MERN Project</h3>
           </NavLink>
         </Navbar.Brand>
 
