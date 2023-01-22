@@ -3,11 +3,12 @@ import { Container } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const About = () => {
+  const URL = process.env.REACT_APP_APP_URL;
   const Navigate = useNavigate();
   const [data, setData] = useState({});
   const GetAbout = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/get", {
+      const response = await axios.get(`${URL}/api/auth/get`, {
         withCredentials: true,
       });
 

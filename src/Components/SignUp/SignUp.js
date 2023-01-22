@@ -5,6 +5,7 @@ import axios from "axios";
 import login from "../images/clipboard_vectorized.png";
 import "../Login/Login.css";
 const SignUp = () => {
+  const URL = process.env.REACT_APP_APP_URL;
   const [validated, setValidated] = useState(false);
 
   const Navigate = useNavigate();
@@ -44,10 +45,7 @@ const SignUp = () => {
         cPassword: user.cPassword,
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
-        Info
-      );
+      const response = await axios.post(`${URL}/api/auth/signup`, Info);
       if (response.status === 201) {
         alert(response.data.message);
         Navigate("/login");
@@ -99,7 +97,7 @@ const SignUp = () => {
                     Please provide Phone Number.
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="validationCustom01">
+                <Form.Group controlId="validationCustom05">
                   <Form.Control
                     required
                     type="text"

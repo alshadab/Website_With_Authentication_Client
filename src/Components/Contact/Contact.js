@@ -11,25 +11,29 @@ import "./Contact.css";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 const Contact = () => {
+  const URL = process.env.REACT_APP_APP_URL;
   const Navigate = useNavigate();
+  const [data, setData] = useState({});
   const [user, setUser] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
-  const [data, setData] = useState({});
+
   const [validated, setValidated] = useState(false);
+
+  //Get Input Value
   const handleChange = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
+    const name = e.target.name;
+    const value = e.target.value;
 
     setUser({ ...user, [name]: value });
   };
   //Get Data
   const GetAbout = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/get", {
+      const response = await axios.get(`${URL}/api/auth/get`, {
         withCredentials: true,
       });
 
@@ -40,21 +44,46 @@ const Contact = () => {
       }
     } catch (e) {
       console.log(e.message);
-      Navigate("/login");
     }
   };
   useEffect(() => {
     GetAbout();
   });
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const form = event.currentTarget;
+
+  //Submit Data
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
     }
 
     setValidated(true);
+    try {
+      const Info = {
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        message: user.message,
+      };
+
+      const response = await axios.post(`${URL}/api/auth/contact`, Info, {
+        withCredentials: true,
+      });
+      if (response.status === 201) {
+        alert(response.data);
+        setUser({ ...user, message: "" });
+      }
+    } catch (e) {
+      if (e.response.status === 400) {
+        alert(e.response.data.error);
+        console.log(e);
+      } else {
+        alert(e.message);
+        console.log(e);
+      }
+    }
   };
 
   return (

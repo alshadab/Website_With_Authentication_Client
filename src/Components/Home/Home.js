@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 const Home = () => {
+  const URL = process.env.REACT_APP_APP_URL;
   const [name, setName] = useState("");
 
   const GetAbout = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/get", {
+      const response = await axios.get(`${URL}/api/auth/get`, {
         withCredentials: true,
       });
 

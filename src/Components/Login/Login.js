@@ -7,6 +7,7 @@ import "./Login.css";
 import login from "../images/clipboard_vectorized.png";
 
 const Login = () => {
+  const URL = process.env.REACT_APP_APP_URL;
   const [validated, setValidated] = useState(false);
   const Navigate = useNavigate();
   const [user, setUser] = useState({
@@ -36,11 +37,9 @@ const Login = () => {
         password: user.password,
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/signin",
-        Info,
-        { withCredentials: true }
-      );
+      const response = await axios.post(`${URL}/api/auth/signin`, Info, {
+        withCredentials: true,
+      });
       if (response.status === 200) {
         alert(`${response.data.user} ${response.data.message}`);
 
